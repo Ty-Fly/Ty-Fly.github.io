@@ -1,10 +1,10 @@
 :root {
-  --color-bg: #0B0A1F;
-  --color-text: #E8E8F5;
-  --color-text-secondary: #B8B8D0;
+  --color-bg: #0b0a1f;
+  --color-text: #e8e8f5;
+  --color-text-secondary: #b8b8d0;
   --color-navbar: rgba(10, 9, 30, 0.85);
-  --color-accent: #6C63FF;
-  --color-accent-hover: #8A82FF;
+  --color-accent: #6c63ff;
+  --color-accent-hover: #8a82ff;
   --color-card-bg: rgba(255, 255, 255, 0.06);
   --color-card-border: rgba(255, 255, 255, 0.12);
 }
@@ -12,9 +12,11 @@
 body {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
   font-family: Arial, sans-serif;
   color: var(--color-text);
-  background: var(--color-bg) url('../img/90595.jpg') no-repeat center top;
+  background: var(--color-bg) url("../img/90595.jpg") no-repeat center top;
   background-size: cover;
   min-height: 100vh;
 }
@@ -29,6 +31,42 @@ body {
   position: relative;
 }
 
+#myFooter {
+  position: relative;
+  display: flex;
+  background-color: var(--color-navbar);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  bottom: 0;
+  left: 0;
+}
+
+#myFooter ul {
+  text-decoration: none;
+
+}
+
+#footer-links {
+ display: flex;
+ flex-direction: row;
+ padding: 0;
+}
+
+#footer-links li {
+ list-style: none;
+}
+
+#myFooter a{
+  display: block;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 0px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
 .logo {
   position: absolute;
   left: 0;
@@ -40,7 +78,7 @@ body {
   padding: 20px;
 }
 
-#menu-toggle{
+#menu-toggle {
   display: none;
 }
 
@@ -68,12 +106,8 @@ body {
 }
 
 .content {
-  max-width:90%;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
-  border-radius: 12px;
+  flex: 1 0 auto; 
+
 }
 
 .content h2 {
@@ -83,12 +117,30 @@ body {
 .content p {
   color: var(--color-text-secondary);
 }
+
+.content-card {
+  max-width: 90%;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+@media screen and (max-width: 775px) {
+  .content-card{
+    max-width: 80%;
+  }
+}
+
 @media screen and (max-width: 625px) {
-  .topnav a{display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     display: block;
     margin-left: auto;
-}
+  }
   .logo {
     left: 50%;
     transform: translate(-50%, -50%);
@@ -96,7 +148,6 @@ body {
 }
 
 @media screen and (max-width: 625px) {
-  .topnav.responsive {position: relative;}
   .topnav.responsive a.icon {
     display: block;
     position: absolute;
@@ -115,6 +166,5 @@ body {
   .topnav.responsive a {
     display: block;
     text-align: center;
-    
   }
 }
