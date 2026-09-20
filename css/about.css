@@ -1,0 +1,9 @@
+.image-container {
+    position: absolute;
+    top: 2;
+    right: 2;
+}
+
+.image-container img {
+    width: 400px;
+}

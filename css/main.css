@@ -1,12 +1,23 @@
-:root {
+/* :root {
   --color-bg: #0b0a1f;
   --color-text: #e8e8f5;
   --color-text-secondary: #b8b8d0;
   --color-navbar: rgba(10, 9, 30, 0.85);
   --color-accent: #6c63ff;
   --color-accent-hover: #8a82ff;
-  --color-card-bg: rgba(255, 255, 255, 0.06);
+  --color-card-bg: rgba(255, 255, 255, 0.15);
   --color-card-border: rgba(255, 255, 255, 0.12);
+} */
+
+:root {
+  --color-bg: #03021c;                        /* matches the navy at the top-left of the image */
+  --color-text: #f0f0ff;
+  --color-text-secondary: #c4c2e0;
+  --color-navbar: rgba(4, 3, 28, 0.80);
+  --color-accent: #4cc9f0;                    /* bright cyan: pops against purple and blue */
+  --color-accent-hover: #8fe3ff;
+  --color-card-bg: rgba(24, 14, 68, 0.55);    /* deep violet-tinted glass instead of white */
+  --color-card-border: rgba(170, 140, 255, 0.28); /* soft violet edge that echoes the purple glow */
 }
 
 body {
@@ -16,10 +27,20 @@ body {
   flex-direction: column;
   font-family: Arial, sans-serif;
   color: var(--color-text);
-  background: var(--color-bg) url("../img/90595.jpg") no-repeat center top;
+  background: var(--color-bg) url("../img/81231.jpg") no-repeat center top;
   background-size: cover;
   min-height: 100vh;
 }
+
+.list-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
 
 .topnav {
   background-color: var(--color-navbar);
@@ -41,6 +62,7 @@ body {
   flex-direction: column;
   bottom: 0;
   left: 0;
+  margin-top: 40px;
 }
 
 #myFooter ul {
@@ -119,12 +141,31 @@ body {
 }
 
 .content-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 90%;
   background-color: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
   border-radius: 12px;
   margin: 40px auto;
   padding: 20px;
+}
+
+.content-card h1{
+  color: var(--color-text);
+}
+
+.content-card h3{
+  color: var(--color-text);
+}
+
+.content-card p {
+  color: var(--color-text-secondary);
+}
+
+.content-card ul {
+  margin-top: 0;
 }
 
 @media screen and (max-width: 775px) {
