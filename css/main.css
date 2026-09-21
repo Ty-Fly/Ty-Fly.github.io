@@ -1,23 +1,22 @@
-/* :root {
-  --color-bg: #0b0a1f;
-  --color-text: #e8e8f5;
-  --color-text-secondary: #b8b8d0;
-  --color-navbar: rgba(10, 9, 30, 0.85);
-  --color-accent: #6c63ff;
-  --color-accent-hover: #8a82ff;
-  --color-card-bg: rgba(255, 255, 255, 0.15);
-  --color-card-border: rgba(255, 255, 255, 0.12);
-} */
-
 :root {
-  --color-bg: #03021c;                        /* matches the navy at the top-left of the image */
+  --color-bg: #03021c; /* matches the navy at the top-left of the image */
   --color-text: #f0f0ff;
   --color-text-secondary: #c4c2e0;
-  --color-navbar: rgba(4, 3, 28, 0.80);
-  --color-accent: #4cc9f0;                    /* bright cyan: pops against purple and blue */
+  --color-navbar: rgba(4, 3, 28, 0.8);
+  --color-accent: #4cc9f0; /* bright cyan: pops against purple and blue */
   --color-accent-hover: #8fe3ff;
-  --color-card-bg: rgba(24, 14, 68, 0.55);    /* deep violet-tinted glass instead of white */
-  --color-card-border: rgba(170, 140, 255, 0.28); /* soft violet edge that echoes the purple glow */
+  --color-card-bg: rgba(
+    24,
+    14,
+    68,
+    0.55
+  ); /* deep violet-tinted glass instead of white */
+  --color-card-border: rgba(
+    170,
+    140,
+    255,
+    0.28
+  ); /* soft violet edge that echoes the purple glow */
 }
 
 body {
@@ -32,7 +31,7 @@ body {
   min-height: 100vh;
 }
 
-.list-container{
+.list-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -40,7 +39,6 @@ body {
   gap: 20px;
   list-style: none;
 }
-
 
 .topnav {
   background-color: var(--color-navbar);
@@ -67,20 +65,19 @@ body {
 
 #myFooter ul {
   text-decoration: none;
-
 }
 
 #footer-links {
- display: flex;
- flex-direction: row;
- padding: 0;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
 }
 
 #footer-links li {
- list-style: none;
+  list-style: none;
 }
 
-#myFooter a{
+#myFooter a {
   display: block;
   color: var(--color-text-secondary);
   text-align: center;
@@ -128,8 +125,7 @@ body {
 }
 
 .content {
-  flex: 1 0 auto; 
-
+  flex: 1 0 auto;
 }
 
 .content h2 {
@@ -152,11 +148,11 @@ body {
   padding: 20px;
 }
 
-.content-card h1{
+.content-card h1 {
   color: var(--color-text);
 }
 
-.content-card h3{
+.content-card h3 {
   color: var(--color-text);
 }
 
@@ -169,7 +165,7 @@ body {
 }
 
 @media screen and (max-width: 775px) {
-  .content-card{
+  .content-card {
     max-width: 80%;
   }
 }

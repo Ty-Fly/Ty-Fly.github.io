@@ -5,5 +5,5 @@ function responsiveToggle() {
   } else {
     x.className = "topnav";
   }
-  console.log("Klik")
+  console.log("Klik");
 }
