@@ -37,6 +37,9 @@
   .content-card p {
     max-width: 80%;
   }
+  .about-card{
+    max-width: 80%;
+  }
 }
 
 .list-container {
