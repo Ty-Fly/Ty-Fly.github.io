@@ -1,11 +1,11 @@
 if ("geolocation" in navigator) {
-  navigator.geolocation.getCurrentPosition(gelukt, mislukt);
+  navigator.geolocation.getCurrentPosition(gelukt, denied);
 } else {
   mislukt();
 }
 
 //Callback voor wanneer de gebruiker op accepteren heeft geklikt.
-function gelukt(positie) {
+function accept(positie) {
   const lat = positie.coords.latitude;
   const lon = positie.coords.longitude;
   haalStadOp(lat, lon);
@@ -13,14 +13,13 @@ function gelukt(positie) {
 }
 
 
-function mislukt() {
-    console.log('er is iets mis gegaan')
+function denied() {
+    console.log('Niet geaccepteerd')
 }
 
 async function haalStadOp(lat, lon) {
 
 try {
-
     const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=nl`;
     
     //Get request naar de bovenstaande url.
@@ -31,10 +30,10 @@ try {
     //Pak in eerste instantie de stad naam, anders het lokaal uitzich en tenslotte "Onbekende plaats" als niks is gevonden
     const stad = data.city || data.locality || "Onbekende plaats";
 
-    console.log(data)
+    console.log(`stad data: \n${data}`)
 
 } catch (fout) {
-    console.log(fout)
+    console.log(`error: \n${fout}`)
 }
 }
 
