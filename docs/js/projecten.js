@@ -33,7 +33,7 @@ async function getGithubProjects() {
   return projects;
 }
 
-async function loadProjectenHTML() {
+async function loadProjecten() {
   try {
     const lijstElement = document.getElementById("project-list");
 
@@ -92,7 +92,7 @@ function searchProjects() {
 
   const lijstElement = document.getElementById("project-list");
 
-  const lijst = lijstElement.children;
+    const lijst = lijstElement.querySelectorAll(".project-card");
 
   for (let index = 0; index < lijst.length; index++) {
     const projectName = lijst[index].getElementsByTagName("H2")[0].innerText;
@@ -105,5 +105,5 @@ function searchProjects() {
   }
 }
 
-loadProjectenHTML();
+loadProjecten();
 document.getElementById("search").addEventListener("input", searchProjects);
