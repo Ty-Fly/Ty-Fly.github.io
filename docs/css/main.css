@@ -1,22 +1,22 @@
 :root {
-  --color-bg: #03021c; /* matches the navy at the top-left of the image */
+  --color-bg: #03021c; 
   --color-text: #f0f0ff;
   --color-text-secondary: #c4c2e0;
   --color-navbar: rgba(4, 3, 28, 0.8);
-  --color-accent: #4cc9f0; /* bright cyan: pops against purple and blue */
+  --color-accent: #4cc9f0; 
   --color-accent-hover: #8fe3ff;
   --color-card-bg: rgba(
     24,
     14,
     68,
     0.55
-  ); /* deep violet-tinted glass instead of white */
+  ); 
   --color-card-border: rgba(
     170,
     140,
     255,
     0.28
-  ); /* soft violet edge that echoes the purple glow */
+  ); 
 }
 
 body {
@@ -30,6 +30,7 @@ body {
   background-size: cover;
   min-height: 100vh;
 }
+
 
 .list-container {
   display: flex;
@@ -147,6 +148,18 @@ body {
   margin: 40px auto;
   padding: 20px;
 }
+.weather-widget {
+  max-width: 320px;
+  text-align: center;
+}
+
+.weather-widget p {
+  margin: 6px 0;
+}
+
+.weather-widget .weer-temp {
+  font-size: 2rem;
+  }
 
 .content-card h1 {
   color: var(--color-text);
