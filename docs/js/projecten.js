@@ -38,11 +38,12 @@ async function loadProjecten() {
     const lijstElement = document.getElementById("project-list");
 
     const githubProjects = await getGithubProjects();
-    const projectenStatus = document.getElementById("projecten-status");
-    projectenStatus.style.display = "none";
-    for (let i = 0; i < githubProjects.length; i++) {
-      console.log(githubProjects[i].naam);
 
+    const projectenStatus = document.getElementById("projecten-status");
+
+    projectenStatus.style.display = "none";
+
+    for (let i = 0; i < githubProjects.length; i++) {
       lijstElement.insertAdjacentHTML(
         "beforeend",
         `
@@ -78,10 +79,13 @@ async function loadProjecten() {
         .getElementById(`${githubProjects[i].naam}-tags`)
         .replaceWith(tagsHTML);
     }
+
+    
   } catch (error) {
     console.error(error);
     projectenStatus.style.display = "";
-    projectenStatus.textContent = "Er is iets mis gegaan met het laden van de projecten";
+    projectenStatus.textContent =
+      "Er is iets mis gegaan met het laden van de projecten";
   }
 }
 
@@ -92,7 +96,7 @@ function searchProjects() {
 
   const lijstElement = document.getElementById("project-list");
 
-    const lijst = lijstElement.querySelectorAll(".project-card");
+  const lijst = lijstElement.querySelectorAll(".project-card");
 
   for (let index = 0; index < lijst.length; index++) {
     const projectName = lijst[index].getElementsByTagName("H2")[0].innerText;
@@ -106,4 +110,5 @@ function searchProjects() {
 }
 
 loadProjecten();
+
 document.getElementById("search").addEventListener("input", searchProjects);
