@@ -25,26 +25,67 @@
     </a>
   </nav>
   <main class="content">
-    <div class="list-container">
+    <div class="about-grid">
       <section class="about-card">
+        <h2>Contact me!</h2>
+        <article class="item-left-border">
+          <form id="contact-form" novalidate>
 
+            <div class="form-group">
+              <label for="naam">Naam</label>
+              <input id="naam" required minlength="2" aria-describedby="naam-error" aria-invalid="false">
+              <span id="naam-error" class="form-fout" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input id="email" type="email" required aria-describedby="email-error" aria-invalid="false">
+              <span id="email-error" class="form-fout" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="bericht">Bericht</label>
+              <textarea id="bericht" required minlength="10" aria-describedby="bericht-error"
+                aria-invalid="false"></textarea>
+              <span id="bericht-error" class="form-fout" role="alert"></span>
+            </div>
+            <button type="submit">Versturen</button>
+            <div id="form-status" class="form-fout" aria-live="polite"></div>
+          </form>
+        </article>
 
       </section>
 
       <section class="about-card about-info">
-        <article class="item-left-border">
-          <h3>Naam:</h3>
-          <p>Cheryl van Gils</p>
-          <h3>Leeftijd:</h3>
-          <p>27 Jaar oud</p>
-          <h3>Woonplaats:</h3>
-          <p>Zoetermeer</p>
-        </article>
-        <article class="item-left-border">
-          <h2>Over mij</h2>
-          <p id="about-description">Ik ben Cheryl van Gils, student HBO-ICT Software Engineering aan de Haagse Hogeschool met een achtergrond in de Werktuigbouwkunde en ondergrondse infra. Naast mijn studie werk ik in de weekenddiensten als NOC Agent bij Joulz, waar ik elektrische assets monitor en storingen afhandel. Als analytisch en leergierig persoon ben ik daarnaast in mijn vrije tijd graag bezig met videogames, hardlopen, muziek en fotografie.</p>
-        </article>
+          <h2>Info</h2>
+
+          <article class="item-left-border">
+            <h3>Naam:</h3>
+            <p>Cheryl van Gils</p>
+            <h3>Leeftijd:</h3>
+            <p>27 Jaar oud</p>
+            <h3>Woonplaats:</h3>
+            <p>Zoetermeer</p>
+          </article>
+
+
+          <article class="item-left-border">
+            <h3>Over mij:</h3>
+            <p id="about-description">Ik ben Cheryl van Gils, student HBO-ICT Software Engineering aan de
+              Haagse
+              Hogeschool met een achtergrond in de Werktuigbouwkunde en ondergrondse infra. Naast mijn studie werk ik in
+              de weekenddiensten als NOC Agent bij Joulz, waar ik elektrische assets monitor en storingen afhandel. Als
+              analytisch en leergierig persoon ben ik daarnaast in mijn vrije tijd graag bezig met videogames,
+              hardlopen,
+              muziek en fotografie.</p>
+          </article>
+
+
       </section>
+
+
+
+
+
+
       <section class="about-card">
         <h2>Experience</h2>
         <article class="item-left-border">
@@ -97,6 +138,7 @@
     </ul>
   </footer>
   <script src="js/script.js"></script>
+  <script src="js/about.js"></script>
 </body>
 
 </html>

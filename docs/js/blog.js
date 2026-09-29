@@ -8,6 +8,32 @@ class Blog {
 }
 
 function loadBlogs() {
+
+  const blogLijst = createBlogs();
+  const blogLijstHTML = document.getElementById("blog-list");
+
+  for (let i = 0; i < blogLijst.length; i++) {
+
+    blogLijstHTML.insertAdjacentHTML(
+      "beforeend",
+      `
+        <article class="blog-card">
+        <h2>${blogLijst[i].titel}</h2>
+        <p>
+          ${blogLijst[i].date.substr(0, blogLijst[i].date.indexOf("T"))}
+          <span> - ${blogLijst[i].readTime} min read</span>
+        </p>
+        <p>
+          ${blogLijst[i].msg}
+        </p>
+      </article>
+        `,
+    );
+  }
+
+}
+
+function createBlogs(){
   let blogLijst = [];
 
   const datum = new Date();
@@ -52,28 +78,7 @@ function loadBlogs() {
     ),
   );
 
-  
-  blogLijstHTML = document.getElementById("blog-list");
-
-  for (let i = 0; i < blogLijst.length; i++) {
-
-    blogLijstHTML.insertAdjacentHTML(
-      "beforeend",
-      `
-        <article class="blog-card">
-        <h2>${blogLijst[i].titel}</h2>
-        <p>
-          ${blogLijst[i].date.substr(0, blogLijst[i].date.indexOf("T"))}
-          <span> - ${blogLijst[i].readTime} min read</span>
-        </p>
-        <p>
-          ${blogLijst[i].msg}
-        </p>
-      </article>
-        `,
-    );
-  }
-
+  return blogLijst
 }
 
 loadBlogs();

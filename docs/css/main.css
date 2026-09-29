@@ -1,22 +1,25 @@
 :root {
-  --color-bg: #03021c; 
+  --color-bg: #03021c;
   --color-text: #f0f0ff;
   --color-text-secondary: #c4c2e0;
   --color-navbar: rgba(4, 3, 28, 0.8);
-  --color-accent: #4cc9f0; 
+  --color-accent: #4cc9f0;
   --color-accent-hover: #8fe3ff;
-  --color-card-bg: rgba(
-    24,
-    14,
-    68,
-    0.55
-  ); 
-  --color-card-border: rgba(
-    170,
-    140,
-    255,
-    0.28
-  ); 
+  --color-card-bg: rgba(24, 14, 68, 0.55);
+  --color-card-border: rgba(170, 140, 255, 0.28);
+}
+
+*,
+*::before,
+*::after { /*Selecteer alle HTML elementen en pseudo-elementen voor -en na de box, en zorgt dat de width de totale breete van een element zal zijn(niet: width + padding + border)*/
+  box-sizing: border-box; 
+  
+}
+
+.content {
+  flex: 1 0 auto;
+  width: min(90%, 1100px); 
+  margin: 0 auto;
 }
 
 body {
@@ -31,14 +34,13 @@ body {
   min-height: 100vh;
 }
 
-
 .list-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill, 
+    minmax(300px, 1fr)
+  ); /*Elke colum is minstens 300px breedt en verdeelt de overige ruimte eerlijk over alle elementen*/
   gap: 20px;
-  list-style: none;
 }
 
 .topnav {
@@ -107,6 +109,7 @@ body {
   color: var(--color-text-secondary);
   text-align: center;
   padding: 14px 16px;
+  width: 110px;
   text-decoration: none;
   font-size: 17px;
 }
@@ -125,10 +128,6 @@ body {
   display: none;
 }
 
-.content {
-  flex: 1 0 auto;
-}
-
 .content h2 {
   color: var(--color-text);
 }
@@ -141,15 +140,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 80%;
   background-color: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
   border-radius: 12px;
-  margin: 40px auto;
+  margin: 40px 0;
   padding: 20px;
 }
 .weather-widget {
   max-width: 320px;
+  margin: 40px auto;
   text-align: center;
 }
 
@@ -159,7 +158,7 @@ body {
 
 .weather-widget .weer-temp {
   font-size: 2rem;
-  }
+}
 
 .content-card h1 {
   color: var(--color-text);
@@ -175,12 +174,6 @@ body {
 
 .content-card ul {
   margin-top: 0;
-}
-
-@media screen and (max-width: 775px) {
-  .content-card {
-    max-width: 80%;
-  }
 }
 
 @media screen and (max-width: 625px) {

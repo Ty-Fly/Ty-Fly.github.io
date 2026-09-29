@@ -8,9 +8,9 @@
   border-radius: 12px;
   padding: 20px;
 }
-
+/* 
 @media screen and (max-width: 775px) {
   .blog-card {
-    max-width: 80%;
+    max-width: 100%;
   }
-}
+} */
