@@ -41,13 +41,15 @@ body {
   color: var(--color-text-secondary);
 }
 
+
 .list-container {
   display: grid;
   grid-template-columns: repeat(
-    auto-fill,
-    minmax(300px, 1fr)
-  ); /*Elke colum is minstens 300px breedt en verdeelt de overige ruimte eerlijk over alle elementen*/
+    2,
+    1fr
+  ); 
   gap: 20px;
+  justify-items: center;
 }
 
 .topnav {
@@ -95,7 +97,7 @@ body {
   border-bottom: 3px solid var(--color-accent);
 }
 
-.topnav .icon {
+.topnav .icon {  
   display: none;
 }
 
@@ -186,6 +188,20 @@ body {
   .logo {
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  
+
+
+}
+
+
+@media screen and (max-width: 900px) {
+  .list-container{
+    grid-template-columns: repeat(
+    1,
+    1fr
+  ); 
   }
 }
 

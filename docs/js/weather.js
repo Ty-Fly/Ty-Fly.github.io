@@ -33,6 +33,7 @@ async function haalStadOp(lat, lon) {
     const land = data.countryCode ?? "";
 
     locatieEl.textContent = `${stad}${land ? ", " + land : ""}`;
+    
   } catch (error) {
     console.log("Stad ophalen mislukt:", error);
     locatieEl.textContent = "Locatie niet gevonden";

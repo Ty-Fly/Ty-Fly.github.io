@@ -25,13 +25,16 @@ form.addEventListener("submit", (event) => {
   const alleGeldig = velden.map(valideerVeld).every(Boolean);
   const status = document.querySelector("#form-status");
   if (!alleGeldig) {
+    status.className = "form-fout";
     status.textContent = "Er zijn nog fouten in het formulier.";
     return;
   }
-
-  status.textContent = "";
-
-  window.confirm("Bericht verzonden!");
-
   form.reset();
+
+  status.className = "form-goed";
+  status.textContent = "Bericht verzonden!";
+
+  setTimeout(function () {
+    status.textContent = "";
+  }, 2000);
 });

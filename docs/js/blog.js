@@ -8,32 +8,37 @@ class Blog {
 }
 
 function loadBlogs() {
-
   const blogLijst = createBlogs();
   const blogLijstHTML = document.getElementById("blog-list");
 
-  for (let i = 0; i < blogLijst.length; i++) {
+  blogLijst.forEach((blog) => {
+    const article = document.createElement("article");
+    article.className = "blog-card";
 
-    blogLijstHTML.insertAdjacentHTML(
-      "beforeend",
-      `
-        <article class="blog-card">
-        <h2>${blogLijst[i].titel}</h2>
-        <p>
-          ${blogLijst[i].date.substr(0, blogLijst[i].date.indexOf("T"))}
-          <span> - ${blogLijst[i].readTime} min read</span>
-        </p>
-        <p>
-          ${blogLijst[i].msg}
-        </p>
-      </article>
-        `,
-    );
-  }
+    const h2 = document.createElement("h2");
+    h2.textContent = blog.titel;
 
+    article.appendChild(h2);
+
+    const pDateTimeRead = document.createElement("p");
+    pDateTimeRead.textContent = blog.date.substr(0, blog.date.indexOf("T"));
+
+    const span = document.createElement("span");
+    span.textContent = ` - ${blog.readTime} min read`;
+
+    pDateTimeRead.appendChild(span);
+    article.appendChild(pDateTimeRead);
+
+    const pText = document.createElement("p");
+    pText.textContent = blog.msg;
+
+    article.appendChild(pText);
+
+    blogLijstHTML.appendChild(article);
+  });
 }
 
-function createBlogs(){
+function createBlogs() {
   let blogLijst = [];
 
   const datum = new Date();
@@ -78,7 +83,7 @@ function createBlogs(){
     ),
   );
 
-  return blogLijst
+  return blogLijst;
 }
 
 loadBlogs();

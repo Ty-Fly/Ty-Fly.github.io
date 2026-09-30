@@ -1,15 +1,8 @@
-import { GITHUB_KEY } from "../config.js";
-
 async function getGithubProjects() {
   // /user/repos geeft ALLE repo's van de eigenaar van het token, ook private
   const response = await fetch(
-    "https://api.github.com/user/repos?visibility=all&affiliation=owner&per_page=100",
-    {
-      headers: {
-        Authorization: `Bearer ${GITHUB_KEY}`,
-        Accept: "application/vnd.github+json",
-      },
-    },
+    "https://api.github.com/users/Ty-Fly/repos?per_page=100",
+    {},
   );
 
   if (!response.ok) {
@@ -34,53 +27,65 @@ async function getGithubProjects() {
 }
 
 async function loadProjecten() {
-  try {
-    const lijstElement = document.getElementById("project-list");
+  const projectenStatus = document.getElementById("projecten-status");
+  const lijstElement = document.getElementById("project-list");
 
+  try {
     const githubProjects = await getGithubProjects();
 
-    const projectenStatus = document.getElementById("projecten-status");
+    if (githubProjects.length < 1) {
+      projectenStatus.textContent = "Er zijn geen projecten gevonden";
+
+      return;
+    }
 
     projectenStatus.style.display = "none";
 
-    for (let i = 0; i < githubProjects.length; i++) {
-      lijstElement.insertAdjacentHTML(
-        "beforeend",
-        `
-       <article class="project-card">
-        <img src="img/PLACEHOLDER-IMAGE-1.png" alt="afbeelding van project ${githubProjects[i].naam}">
-        <div>
-          <h2>${githubProjects[i].naam}</h2>
-          <p>${githubProjects[i].beschrijving}</p>
-          <ul id="${githubProjects[i].naam}-tags">
-          </ul>
-          <div>
-            <a href="${githubProjects[i].url}">View project</a>
-          </div>
-        </div>
-      </article>
-    `,
-      );
+    githubProjects.forEach((project) => {
+      const article = document.createElement("article");
+      article.className = "project-card";
 
-      const tagsHTML = document.createElement("ul");
-      tagsHTML.className = "project-tags";
+      const img = document.createElement("img");
+      img.src = "img/PLACEHOLDER-IMAGE-1.png";
+      img.alt = `afbeelding van het project ${project.naam}`;
+
+      const innerDiv = document.createElement("div");
+
+      const h2 = document.createElement("h2");
+      h2.textContent = project.naam;
+
+      const p = document.createElement("p");
+      p.textContent = project.beschrijving;
+
+      const tagsList = document.createElement("ul");
+      tagsList.className = "project-tags";
 
       const label = document.createElement("li");
       label.textContent = "Tags:";
-      tagsHTML.appendChild(label);
+      tagsList.appendChild(label);
 
-      githubProjects[i].topics.forEach((topic) => {
+      project.topics.forEach((topic) => {
         const tag = document.createElement("li");
         tag.textContent = topic.toUpperCase();
-        tagsHTML.appendChild(tag);
+        tagsList.appendChild(tag);
       });
 
-      document
-        .getElementById(`${githubProjects[i].naam}-tags`)
-        .replaceWith(tagsHTML);
-    }
+      const linkDiv = document.createElement("div");
+      const a = document.createElement("a");
+      a.href = project.url;
+      a.textContent = "View project";
+      linkDiv.appendChild(a);
 
-    
+      innerDiv.appendChild(h2);
+      innerDiv.appendChild(p);
+      innerDiv.appendChild(tagsList);
+      innerDiv.appendChild(linkDiv);
+
+      article.appendChild(img);
+      article.appendChild(innerDiv);
+
+      lijstElement.appendChild(article);
+    });
   } catch (error) {
     console.error(error);
     projectenStatus.style.display = "";
@@ -100,6 +105,10 @@ function searchProjects() {
 
   for (let index = 0; index < lijst.length; index++) {
     const projectName = lijst[index].getElementsByTagName("H2")[0].innerText;
+
+    
+
+
 
     if (projectName.toUpperCase().indexOf(filter) > -1) {
       lijst[index].style.display = "";
