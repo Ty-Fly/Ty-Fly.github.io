@@ -11,15 +11,9 @@
 
 *,
 *::before,
-*::after { /*Selecteer alle HTML elementen en pseudo-elementen voor -en na de box, en zorgt dat de width de totale breete van een element zal zijn(niet: width + padding + border)*/
-  box-sizing: border-box; 
-  
-}
-
-.content {
-  flex: 1 0 auto;
-  width: min(90%, 1100px); 
-  margin: 0 auto;
+*::after {
+  /*Selecteer alle HTML elementen en pseudo-elementen voor -en na de box, en zorgt dat de width de totale breete van een element zal zijn(niet: width + padding + border)*/
+  box-sizing: border-box;
 }
 
 body {
@@ -34,10 +28,23 @@ body {
   min-height: 100vh;
 }
 
+.content {
+  flex: 1 0 auto;
+  width: min(90%, 1100px);
+  margin: 0 auto;
+}
+.content h2 {
+  color: var(--color-text);
+}
+
+.content p {
+  color: var(--color-text-secondary);
+}
+
 .list-container {
   display: grid;
   grid-template-columns: repeat(
-    auto-fill, 
+    auto-fill,
     minmax(300px, 1fr)
   ); /*Elke colum is minstens 300px breedt en verdeelt de overige ruimte eerlijk over alle elementen*/
   gap: 20px;
@@ -51,42 +58,6 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-}
-
-#myFooter {
-  position: relative;
-  display: flex;
-  background-color: var(--color-navbar);
-  backdrop-filter: blur(6px);
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  bottom: 0;
-  left: 0;
-  margin-top: 40px;
-}
-
-#myFooter ul {
-  text-decoration: none;
-}
-
-#footer-links {
-  display: flex;
-  flex-direction: row;
-  padding: 0;
-}
-
-#footer-links li {
-  list-style: none;
-}
-
-#myFooter a {
-  display: block;
-  color: var(--color-text-secondary);
-  text-align: center;
-  padding: 0px 16px;
-  text-decoration: none;
-  font-size: 17px;
 }
 
 .logo {
@@ -128,14 +99,6 @@ body {
   display: none;
 }
 
-.content h2 {
-  color: var(--color-text);
-}
-
-.content p {
-  color: var(--color-text-secondary);
-}
-
 .content-card {
   display: flex;
   flex-direction: column;
@@ -174,6 +137,42 @@ body {
 
 .content-card ul {
   margin-top: 0;
+}
+
+#myFooter {
+  position: relative;
+  display: flex;
+  background-color: var(--color-navbar);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  bottom: 0;
+  left: 0;
+  margin-top: 40px;
+}
+
+#myFooter ul {
+  text-decoration: none;
+}
+
+#footer-links {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+#footer-links li {
+  list-style: none;
+}
+
+#myFooter a {
+  display: block;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 0px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
 
 @media screen and (max-width: 625px) {

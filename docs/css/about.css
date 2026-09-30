@@ -12,7 +12,6 @@
 .about-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  
   gap: 24px;
   margin: 40px 0;
 }
@@ -70,3 +69,5 @@
 .form-fout {
   color: #ff8a8a;
 }
+
+
