@@ -106,10 +106,6 @@ function searchProjects() {
   for (let index = 0; index < lijst.length; index++) {
     const projectName = lijst[index].getElementsByTagName("H2")[0].innerText;
 
-    
-
-
-
     if (projectName.toUpperCase().indexOf(filter) > -1) {
       lijst[index].style.display = "";
     } else {

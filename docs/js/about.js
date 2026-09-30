@@ -23,18 +23,16 @@ function valideerVeld(veld) {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const alleGeldig = velden.map(valideerVeld).every(Boolean);
+
   const status = document.querySelector("#form-status");
   if (!alleGeldig) {
     status.className = "form-fout";
     status.textContent = "Er zijn nog fouten in het formulier.";
     return;
   }
+  
   form.reset();
 
   status.className = "form-goed";
   status.textContent = "Bericht verzonden!";
-
-  setTimeout(function () {
-    status.textContent = "";
-  }, 2000);
 });
