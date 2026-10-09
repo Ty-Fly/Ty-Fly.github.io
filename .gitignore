@@ -1,3 +1,5 @@
 ﻿.idea
-.env
-config.js
+WPFWBackend/.vs
+WPFWBackend/bin
+WPFWBackend/obj
+WPFWBackend/WPFWBackend.http
