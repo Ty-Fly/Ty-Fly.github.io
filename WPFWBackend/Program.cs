@@ -1,13 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+var connectionString = builder.Configuration.GetConnectionString("SQL") ??
+    throw new InvalidOperationException("Connectionstring SQL is niet aanwezig. Check appsettings.json.");
+
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddDbContext<WPFWDb>(
+    options => options.UseSqlServer());
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
