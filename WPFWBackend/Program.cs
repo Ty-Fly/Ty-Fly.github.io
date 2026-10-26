@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WPFWBackend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddDbContext<WPFWDb>(
-    options => options.UseSqlServer());
+    options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 

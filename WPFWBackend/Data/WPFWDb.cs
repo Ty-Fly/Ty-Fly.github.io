@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using WPFWBackend.Domain;
 
-class WPFWDb : DbContext
+namespace WPFWBackend.Data;
+public class WPFWDb : DbContext
 {
     public WPFWDb(DbContextOptions<WPFWDb> options)
         : base(options) { }
