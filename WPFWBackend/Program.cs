@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WPFWBackend.Data;
+using WPFWBackend.Features.Projects.GetProjects;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddDbContext<WPFWDb>(
     options => options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<GetProjectsHandler>();
 
 var app = builder.Build();
 
