@@ -22,7 +22,7 @@ public sealed class GetBlogsHandler
 
 
 
-        return blog;
+        return blogs;
     }
 }
 

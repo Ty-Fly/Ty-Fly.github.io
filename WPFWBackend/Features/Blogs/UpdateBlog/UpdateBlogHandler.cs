@@ -1,8 +1,7 @@
 using WPFWBackend.Data;
 using Microsoft.EntityFrameworkCore;
-using WPFWBackend.Features.Blogs.UpdateBlog;
 
-namespace WPFWBackend.Features.Projects.UpdateProject;
+namespace WPFWBackend.Features.Blogs.UpdateBlog;
 
 public sealed class UpdateBlogHandler
 {

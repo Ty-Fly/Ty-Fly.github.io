@@ -9,14 +9,14 @@ public sealed class GetProjectsHandler
 
     public GetProjectsHandler(WPFWDb db) => _db = db;
 
-    public async Task<List<GetProjectsResponse>> HandleAsync(CancellationToken cancellationToken)
+    public async Task<List<GetProjectsResponse>> HandleAsync(CancellationToken token)
     {
 
         var projects = await _db.Projects
             .AsNoTracking()
             .OrderBy(project => project.Id)
             .Select(project => new GetProjectsResponse(project.Id ,project.Titel, project.Beschrijving, project.Categorie, project.GithubUrl, project.Datum))
-            .ToListAsync(cancellationToken);
+            .ToListAsync(token);
 
         return projects;
     }
