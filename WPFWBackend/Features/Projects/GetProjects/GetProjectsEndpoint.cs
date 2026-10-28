@@ -6,7 +6,7 @@ public static class GetProjectsEndpoint
     {
         return group.MapGet("", async Task<IResult> (GetProjectsHandler handler, CancellationToken token) =>
         {
-            var projects = await handler.HandleAsync(token: token);
+            var projects = await handler.HandleAsync(token);
 
 
             return TypedResults.Ok(projects);

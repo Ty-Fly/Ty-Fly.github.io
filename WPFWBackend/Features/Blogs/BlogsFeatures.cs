@@ -21,7 +21,7 @@ public static class BlogsFeatures
 
     public static IEndpointRouteBuilder MapBlogsEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/api/projects").WithTags("Projects");
+        var group = app.MapGroup("/api/blogs").WithTags("Blogs");
 
         group.MapGetBlogEndpoint();     
         group.MapGetBlogsEndpoint();

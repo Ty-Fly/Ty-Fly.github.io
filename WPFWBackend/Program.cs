@@ -8,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("SQL") ??
     throw new InvalidOperationException("Connectionstring SQL is niet aanwezig. Check appsettings.json.");
 
-builder.Services.AddProjectFeature();
+builder.Services.AddProjectsFeature();
+builder.Services.AddBlogsFeature();
 builder.Services.AddValidation();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
@@ -30,6 +31,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapProjectEndpoints();
+app.MapProjectsEndpoints();
+app.MapBlogsEndpoints();
 
 app.Run();

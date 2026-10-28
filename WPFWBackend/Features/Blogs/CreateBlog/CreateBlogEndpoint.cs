@@ -4,7 +4,7 @@ public static class CreateBlogEndpoint
 {
     public static RouteHandlerBuilder MapCreateBlogEndpoint(this RouteGroupBuilder group) 
     {
-        return group.MapPost("/{id:int}", async Task<IResult> (int id, CreateBlogRequest request, CreateBlogHandler handler, CancellationToken token) =>
+        return group.MapPost("", async Task<IResult> (CreateBlogRequest request, CreateBlogHandler handler, CancellationToken token) =>
         {
           var createdBlog = await handler.HandleAsync(request, token);
 

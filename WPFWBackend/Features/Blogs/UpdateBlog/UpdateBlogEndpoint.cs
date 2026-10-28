@@ -1,7 +1,7 @@
 
 namespace WPFWBackend.Features.Blogs.UpdateBlog;
 
-public static class UpdateProjectEndpoint
+public static class UpdateBlogEndpoint
 {
      public static RouteHandlerBuilder MapUpdateBlogEndpoint(this RouteGroupBuilder group)
     {
@@ -13,6 +13,6 @@ public static class UpdateProjectEndpoint
                 : TypedResults.NotFound();
 
         })
-            .WithName("UpdateProject");
+            .WithName("UpdateBlog");
     }
 }

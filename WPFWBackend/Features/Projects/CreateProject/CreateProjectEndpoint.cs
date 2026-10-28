@@ -4,7 +4,7 @@ public static class CreateProjectEndpoint
 {
     public static RouteHandlerBuilder MapCreateProjectEndpoint(this RouteGroupBuilder group) 
     {
-        return group.MapPost("/{id:int}", async Task<IResult> (int id, CreateProjectRequest request, CreateProjectHandler handler, CancellationToken token) =>
+        return group.MapPost("", async Task<IResult> (CreateProjectRequest request, CreateProjectHandler handler, CancellationToken token) =>
         {
           var createdProject = await handler.HandleAsync(request, token);
 
