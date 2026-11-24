@@ -18,6 +18,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<WPFWDb>(
     options => options.UseSqlServer(connectionString));
 
+builder.Services.AddIdentityApiEndpoints<User>()
+    .AddEntityFrameworkStores<WPFWDb>();
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -30,6 +34,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapProjectsEndpoints();
 app.MapBlogsEndpoints();
