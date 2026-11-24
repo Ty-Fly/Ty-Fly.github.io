@@ -17,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddDbContext<WPFWDb>(
     options => options.UseSqlServer(connectionString));
-
+//Zet identity function op User (UserManager en SignInManager)
 builder.Services.AddIdentityApiEndpoints<User>()
     .AddEntityFrameworkStores<WPFWDb>();
 
