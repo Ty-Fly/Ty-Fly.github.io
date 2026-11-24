@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WPFWBackend.Data;
+using WPFWBackend.Features.Auth;
 using WPFWBackend.Features.Blogs;
 using WPFWBackend.Features.Projects;
 
@@ -17,14 +19,22 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddDbContext<WPFWDb>(
     options => options.UseSqlServer(connectionString));
-//Zet identity function op User (UserManager en SignInManager)
+
+//Zet identity function op User (UserManager en SignInManager) en voeg IdentityRole voor rollen service
 builder.Services.AddIdentityApiEndpoints<User>()
+    .AddRoles<IdentityRole>()             
     .AddEntityFrameworkStores<WPFWDb>();
 
-builder.Services.AddAuthorization();
+
+//Registreert de autorisatieservices en de policy
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy(Policies.CanEditContent, policy =>
+        policy.RequireRole(Roles.Editor, Roles.Admin));
 
 var app = builder.Build();
 
+//Voeg de rollen toe aan de databse, en geef de services mee voor de scope
+await RoleSeeder.SeedRoleAsync(app.Services);
 
 if (app.Environment.IsDevelopment())
 {
