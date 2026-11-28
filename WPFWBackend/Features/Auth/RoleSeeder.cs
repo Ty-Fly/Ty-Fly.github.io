@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using WPFWBackend.Features.Auth;
 
+namespace WPFWBackend.Features.Auth;
+
 public static class RoleSeeder
 {
     public static async Task SeedRoleAsync(IServiceProvider services)

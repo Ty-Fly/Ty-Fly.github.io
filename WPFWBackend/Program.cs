@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WPFWBackend.Data;
+using WPFWBackend.Domain;
 using WPFWBackend.Features.Auth;
 using WPFWBackend.Features.Blogs;
 using WPFWBackend.Features.Projects;
@@ -16,13 +17,17 @@ builder.Services.AddValidation();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAuthFeature();
 
 builder.Services.AddDbContext<WPFWDb>(
     options => options.UseSqlServer(connectionString));
 
 //Zet identity function op User (UserManager en SignInManager) en voeg IdentityRole voor rollen service
-builder.Services.AddIdentityApiEndpoints<User>()
-    .AddRoles<IdentityRole>()             
+builder.Services.AddIdentityApiEndpoints<User>(options =>
+    {
+        options.User.RequireUniqueEmail = true;   // geen dubbele e-mailadressen
+    })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<WPFWDb>();
 
 
@@ -48,6 +53,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapAuthEndpoints();
 app.MapProjectsEndpoints();
 app.MapBlogsEndpoints();
 
