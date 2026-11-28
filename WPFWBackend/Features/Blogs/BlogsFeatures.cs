@@ -1,3 +1,4 @@
+using WPFWBackend.Features.Auth;
 using WPFWBackend.Features.Blogs.CreateBlog;
 using WPFWBackend.Features.Blogs.DeleteBlog;
 using WPFWBackend.Features.Blogs.GetBlogs;
@@ -15,19 +16,22 @@ public static class BlogsFeatures
         services.AddScoped<UpdateBlogHandler>();
         services.AddScoped<DeleteBlogHandler>();
 
-
         return services;
     }
 
     public static IEndpointRouteBuilder MapBlogsEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/api/blogs").WithTags("Blogs");
+        var group = app.MapGroup("/api/blogs")
+            .WithTags("Blogs")
+            .DisableCookieRedirect();   
 
-        group.MapGetBlogEndpoint();     
+        group.MapGetBlogEndpoint();
         group.MapGetBlogsEndpoint();
-        group.MapDeleteBlogEndpoint();
-        group.MapUpdateBlogEndpoint();
-        group.MapCreateBlogEndpoint();    
+
+        // Alleen rollen met CanEditContent policy
+        group.MapCreateBlogEndpoint().RequireAuthorization(Policies.CanEditContent);
+        group.MapUpdateBlogEndpoint().RequireAuthorization(Policies.CanEditContent);
+        group.MapDeleteBlogEndpoint().RequireAuthorization(Policies.CanEditContent);
 
         return app;
     }
