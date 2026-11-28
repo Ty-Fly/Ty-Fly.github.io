@@ -27,7 +27,7 @@ public sealed class RegisterHandler
 
         var roles = await _userManager.GetRolesAsync(user);
 
-        return (result, new RegisterResponse(user.Id, user.Email!, roles));
+        return (result, new RegisterResponse(user.Id, user.Email!));
     }
     
 }

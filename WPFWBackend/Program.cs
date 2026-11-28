@@ -42,10 +42,14 @@ var app = builder.Build();
 await RoleSeeder.SeedRoleAsync(app.Services);
 
 if (app.Environment.IsDevelopment())
-{
+{ 
+    await UserSeeder.SeedUsersAsync(app.Services, app.Configuration);
+
     app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
+       
+
 }
 
 app.UseHttpsRedirection();
