@@ -8,14 +8,16 @@ public static class RegisterEndpoint
     {
         return group.MapPost("/register", async Task<IResult> (RegisterRequest request, RegisterHandler handler) =>
         {
-            var result = await handler.HandleAsync(request);
+            var (result, response) = await handler.HandleAsync(request);
 
             return result.Succeeded
-                ? TypedResults.Ok()                                   
-                : TypedResults.ValidationProblem(ToDictionary(result.Errors)); 
+                ? TypedResults.Ok(response)                                     // 200 + id en e-mail
+                : TypedResults.ValidationProblem(ToDictionary(result.Errors));  // 400
         })
         .WithName("Register");
     }
+
+    // Zet de Identity-fouten om naar het formaat dat ValidationProblem verwacht
     private static Dictionary<string, string[]> ToDictionary(IEnumerable<IdentityError> errors)
     {
         var result = new Dictionary<string, string[]>();
